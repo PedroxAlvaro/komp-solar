@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Proyecto Bombeo Solar | Inversiones Komp</title>
+
+<style>
+
+/* ================= RESET ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0b0b0b;
+color:#fff;
+line-height:1.6;
+}
+
+img{
+width:100%;
+display:block;
+}
+
+/* ================= HEADER ================= */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#0b0b0b;
+position:sticky;
+top:0;
+z-index:1000;
+border-bottom:1px solid #1a1a1a;
+}
+
+.logo{
+font-size:22px;
+font-weight:600;
+color:#e1641e;
+}
+
+.nav-menu{
+display:flex;
+gap:30px;
+}
+
+.nav-menu a{
+color:#ccc;
+text-decoration:none;
+font-size:14px;
+}
+
+.nav-menu a:hover{
+color:#e1641e;
+}
+
+.hamburger{
+display:none;
+flex-direction:column;
+cursor:pointer;
+}
+
+.hamburger span{
+height:3px;
+width:25px;
+background:#fff;
+margin-bottom:4px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:60px;
+max-width:1200px;
+margin:auto;
+padding:80px 8%;
+}
+
+.hero img{
+border-radius:10px;
+}
+
+.hero-text h1{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.hero-label{
+color:#e1641e;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+margin-bottom:10px;
+}
+
+.hero-text p{
+color:#bbb;
+font-size:16px;
+}
+
+/* ================= SECCIONES ================= */
+
+section{
+padding:90px 8%;
+max-width:1200px;
+margin:auto;
+}
+
+.section-title{
+font-size:30px;
+margin-bottom:40px;
+color:#e1641e;
+text-align:center;
+}
+
+/* ================= DATOS ================= */
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+}
+
+.info-box{
+background:#151515;
+padding:25px;
+border-radius:10px;
+text-align:center;
+}
+
+.info-box h3{
+color:#e1641e;
+margin-bottom:8px;
+font-size:16px;
+}
+
+.info-box p{
+color:#bbb;
+}
+
+/* ================= CAROUSEL ================= */
+
+.carousel{
+position:relative;
+max-width:900px;
+margin:auto;
+overflow:hidden;
+border-radius:10px;
+}
+
+.carousel-track{
+display:flex;
+transition:transform .6s ease-in-out;
+}
+
+.carousel-img{
+min-width:100%;
+height:420px;
+object-fit:cover;
+}
+
+.carousel-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,.5);
+border:none;
+color:white;
+font-size:24px;
+padding:10px 15px;
+cursor:pointer;
+border-radius:5px;
+transition:.3s;
+}
+
+.carousel-btn:hover{
+background:#e1641e;
+}
+
+.prev{ left:10px; }
+.next{ right:10px; }
+
+.carousel-dots{
+position:absolute;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:10px;
+}
+
+.carousel-dots span{
+width:10px;
+height:10px;
+background:#777;
+border-radius:50%;
+cursor:pointer;
+transition:.3s;
+}
+
+.carousel-dots .active{
+background:#e1641e;
+}
+
+/* ================= RESULTADOS ================= */
+
+.resultados{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.resultado{
+background:#151515;
+padding:30px;
+border-radius:10px;
+text-align:center;
+}
+
+.resultado h3{
+color:#e1641e;
+font-size:26px;
+margin-bottom:10px;
+}
+
+.resultado p{
+color:#bbb;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+background:#e1641e;
+padding:70px 8%;
+border-radius:10px;
+text-align:center;
+}
+
+.cta h2{
+color:#000;
+margin-bottom:10px;
+}
+
+.cta p{
+color:#000;
+margin-bottom:25px;
+}
+
+.btn{
+background:#000;
+color:#e1641e;
+padding:12px 24px;
+border-radius:6px;
+text-decoration:none;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+gap:40px;
+}
+
+.nav-menu{
+display:none;
+position:absolute;
+top:70px;
+right:0;
+background:#0b0b0b;
+flex-direction:column;
+padding:20px;
+}
+
+.nav-menu.active{
+display:flex;
+}
+
+.hamburger{
+display:flex;
+}
+
+.carousel-img{
+height:260px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Inversiones Komp</div>
+
+<nav class="nav-menu" id="menu">
+
+<a href="index.html">Inicio</a>
+<a href="#proyecto">Proyecto</a>
+<a href="#galeria">Galería</a>
+<a href="index.html#contacto">Contacto</a>
+
+</nav>
+
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<img src="ft.png">
+
+<div class="hero-text">
+
+<p class="hero-label">Sistema de Bombeo Solar</p>
+
+<h1>Bombeo de Agua con Energía Solar</h1>
+
+<p>
+Sistema diseñado para extracción y suministro de agua mediante energía solar, ideal para uso agrícola, ganadero y zonas sin acceso a red eléctrica.
+</p>
+
+</div>
+
+</section>
+
+<!-- DATOS -->
+
+<section id="proyecto">
+
+<h2 class="section-title">Datos del Proyecto</h2>
+
+<div class="info-grid">
+
+<div class="info-box">
+<h3>Ubicación</h3>
+<p>Masaya</p>
+</div>
+
+<div class="info-box">
+<h3>Capacidad</h3>
+<p>50kW</p>
+</div>
+
+<div class="info-box">
+<h3>Bomba</h3>
+<p>Sumergible Solar</p>
+</div>
+
+<div class="info-box">
+<h3>Aplicación</h3>
+<p>Riego Agrícola</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- GALERIA -->
+
+<section id="galeria">
+
+<h2 class="section-title">Galería de Instalación</h2>
+
+<div class="carousel">
+
+<div class="carousel-track">
+
+<img src="ft.png" class="carousel-img">
+<img src="ft.png" class="carousel-img">
+<img src="ft.png" class="carousel-img">
+<img src="ft.png" class="carousel-img">
+
+</div>
+
+<button class="carousel-btn prev">&#10094;</button>
+<button class="carousel-btn next">&#10095;</button>
+
+<div class="carousel-dots"></div>
+
+</div>
+
+</section>
+
+<!-- RESULTADOS -->
+
+<section>
+
+<h2 class="section-title">Resultados del Sistema</h2>
+
+<div class="resultados">
+
+<div class="resultado">
+<h3>100%</h3>
+<p>Operación con energía solar</p>
+</div>
+
+<div class="resultado">
+<h3>0 combustible</h3>
+<p>Eliminación de costos en diésel</p>
+</div>
+
+<div class="resultado">
+<h3>Uso continuo</h3>
+<p>Suministro diario de agua</p>
+</div>
+
+<div class="resultado">
+<h3>Sostenible</h3>
+<p>Solución ecológica</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Optimiza el suministro de agua con energía solar</h2>
+
+<p>
+Implementamos sistemas de bombeo solar adaptados a tus necesidades agrícolas o productivas.
+</p>
+
+<a href="index.html#contacto" class="btn">
+Solicitar Evaluación
+</a>
+
+</section>
+
+<script>
+
+/* MENU */
+const hamburger=document.getElementById("hamburger");
+const menu=document.getElementById("menu");
+
+hamburger.onclick=()=>menu.classList.toggle("active");
+
+/* CAROUSEL */
+const track=document.querySelector(".carousel-track");
+const slides=document.querySelectorAll(".carousel-img");
+const next=document.querySelector(".next");
+const prev=document.querySelector(".prev");
+const dotsContainer=document.querySelector(".carousel-dots");
+
+let index=0;
+let interval;
+
+slides.forEach((_,i)=>{
+const dot=document.createElement("span");
+if(i===0) dot.classList.add("active");
+dot.onclick=()=>{index=i;update();}
+dotsContainer.appendChild(dot);
+});
+
+const dots=document.querySelectorAll(".carousel-dots span");
+
+function update(){
+track.style.transform=`translateX(-${index*100}%)`;
+dots.forEach(d=>d.classList.remove("active"));
+dots[index].classList.add("active");
+}
+
+next.onclick=()=>{index=(index+1)%slides.length;update();}
+prev.onclick=()=>{index=(index-1+slides.length)%slides.length;update();}
+
+function start(){
+interval=setInterval(()=>{index=(index+1)%slides.length;update();},4000);
+}
+
+function stop(){clearInterval(interval);}
+
+start();
+
+const carousel=document.querySelector(".carousel");
+carousel.onmouseenter=stop;
+carousel.onmouseleave=start;
+
+let startX=0;
+
+carousel.addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX;
+});
+
+carousel.addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX;
+if(startX-endX>50) next.click();
+else if(endX-startX>50) prev.click();
+});
+
+</script>
+
+</body>
+</html>

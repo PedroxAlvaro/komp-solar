@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Energía Solar para PYMES | Inversiones Komp</title>
+
+<style>
+
+/* =========================
+RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+line-height:1.6;
+overflow-x:hidden;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+/* =========================
+HEADER
+========================= */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:#000;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 4px 15px rgba(0,0,0,0.6);
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#e1641e;
+}
+
+.nav-menu{
+display:flex;
+gap:25px;
+}
+
+.nav-menu a{
+color:#fff;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-menu a:hover{
+color:#e1641e;
+}
+
+.hamburger{
+display:none;
+flex-direction:column;
+cursor:pointer;
+}
+
+.hamburger span{
+height:3px;
+width:25px;
+background:#fff;
+margin-bottom:5px;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero-pymes{
+position:relative;
+background:url('panel.jpeg') center/cover no-repeat;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:120px 10%;
+text-align:center;
+}
+         
+.hero-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.85));
+}
+
+.hero-content{
+position:relative;
+max-width:800px;
+margin:auto;
+}
+
+.hero-title{
+font-size:52px;
+color:#e1641e;
+margin-bottom:20px;
+font-weight:700;
+}
+
+.hero-subtitle{
+font-size:18px;
+margin-bottom:35px;
+color:#ddd;
+}
+
+/* BOTÓN */
+
+.btn-primary{
+
+background:#e1641e;
+color:#fff;
+padding:15px 32px;
+border-radius:10px;
+font-weight:600;
+display:inline-block;
+transition:.3s;
+box-shadow:0 8px 20px rgba(225,100,30,0.35);
+
+}
+
+.btn-primary:hover{
+
+background:#ff7b34;
+transform:translateY(-3px);
+box-shadow:0 12px 30px rgba(225,100,30,0.45);
+
+}
+
+/* =========================
+SECCIONES
+========================= */
+
+section{
+padding:110px 10%;
+max-width:1200px;
+margin:auto;
+}
+
+.section-title{
+text-align:center;
+font-size:38px;
+margin-bottom:60px;
+color:#e1641e;
+}
+
+/* =========================
+BENEFICIOS
+========================= */
+
+.beneficios-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.beneficio-card{
+
+background:#161616;
+
+padding:35px 30px;
+
+border-radius:14px;
+
+text-align:center;
+
+border:1px solid rgba(255,255,255,0.05);
+
+transition:.35s;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+
+}
+
+.beneficio-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#e1641e;
+
+box-shadow:0 20px 40px rgba(0,0,0,0.7);
+
+}
+
+.beneficio-icon{
+font-size:40px;
+margin-bottom:15px;
+color:#e1641e;
+}
+
+/* =========================
+PROYECTOS
+========================= */
+
+.proyectos-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.proyecto-card{
+position:relative;
+border-radius:12px;
+overflow:hidden;
+}
+
+.proyecto-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.proyecto-overlay{
+
+position:absolute;
+inset:0;
+
+background:rgba(0,0,0,.75);
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+opacity:0;
+
+transition:.4s;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+.proyecto-card:hover .proyecto-overlay{
+opacity:1;
+}
+
+/* =========================
+PROCESO
+========================= */
+
+.proceso-steps{
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+justify-content:center;
+}
+
+.step-card{
+
+flex:1 1 220px;
+
+background:#161616;
+
+padding:35px 30px;
+
+border-radius:14px;
+
+text-align:center;
+
+border:1px solid rgba(255,255,255,0.05);
+
+transition:.35s;
+
+}
+
+.step-card:hover{
+transform:translateY(-6px);
+border-color:#e1641e;
+}
+
+.step-number{
+font-size:32px;
+font-weight:bold;
+color:#e1641e;
+margin-bottom:10px;
+}
+
+/* =========================
+CTA
+========================= */
+
+.cta{
+background:#e1641e;
+text-align:center;
+padding:90px 10%;
+border-radius:12px;
+}
+
+.cta h2{
+margin-bottom:20px;
+font-size:30px;
+}
+
+.cta .btn-primary{
+background:#000;
+color:#e1641e;
+box-shadow:none;
+}
+
+/* =========================
+ANIMACION
+========================= */
+
+.fade-section{
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.fade-section.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+header{
+padding:15px 5%;
+}
+
+.hero-pymes{
+padding:100px 5%;
+min-height:90vh;
+}
+
+.hero-title{
+font-size:34px;
+}
+
+.hero-subtitle{
+font-size:16px;
+}
+
+.nav-menu{
+position:absolute;
+top:70px;
+right:0;
+background:#000;
+flex-direction:column;
+width:220px;
+padding:20px;
+display:none;
+}
+
+.nav-menu.active{
+display:flex;
+}
+
+.nav-menu a{
+margin:10px 0;
+}
+
+.hamburger{
+display:flex;
+}
+
+.beneficios-grid,
+.proyectos-grid{
+grid-template-columns:1fr;
+}
+
+.proceso-steps{
+flex-direction:column;
+align-items:center;
+}
+
+.step-card{
+width:100%;
+max-width:420px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Inversiones Komp</div>
+
+<nav class="nav-menu" id="navMenu">
+<a href="index.html">Inicio</a>
+<a href="#beneficios">Beneficios</a>
+<a href="#proyectos">Proyectos</a>
+<a href="#proceso">Proceso</a>
+<a href="index.html#contacto">Contacto</a>
+</nav>
+
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero-pymes">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1 class="hero-title">Energía Solar para PYMES</h1>
+
+<p class="hero-subtitle">
+Soluciones solares diseñadas para pequeñas y medianas empresas que buscan reducir costos eléctricos y mejorar su eficiencia energética.
+</p>
+
+<a href="index.html#contacto" class="btn-primary">Solicitar Evaluación</a>
+
+</div>
+
+</section>
+
+<!-- BENEFICIOS -->
+
+<section id="beneficios" class="fade-section">
+
+<h2 class="section-title">Beneficios para tu Empresa</h2>
+
+<div class="beneficios-grid">
+
+<div class="beneficio-card">
+<div class="beneficio-icon">🏢</div>
+<h3>Reducción de Costos</h3>
+<p>Reduce significativamente los gastos eléctricos mensuales.</p>
+</div>
+
+<div class="beneficio-card">
+<div class="beneficio-icon">⚡</div>
+<h3>Alta Eficiencia</h3>
+<p>Optimiza el consumo energético de tu negocio.</p>
+</div>
+
+<div class="beneficio-card">
+<div class="beneficio-icon">🌍</div>
+<h3>Energía Limpia</h3>
+<p>Contribuye a la sostenibilidad ambiental.</p>
+</div>
+
+<div class="beneficio-card">
+<div class="beneficio-icon">📊</div>
+<h3>Monitoreo Inteligente</h3>
+<p>Controla la producción energética en tiempo real.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROYECTOS -->
+
+<section id="proyectos" class="fade-section">
+
+<h2 class="section-title">Proyectos para PYMES</h2>
+
+<div class="proyectos-grid">
+
+<div class="proyecto-card">
+<img src="ps.jpeg">
+<div class="proyecto-overlay">
+<h3>Empresa Comercial</h3>
+<p>Sistema solar 50kW</p>
+</div>
+</div>
+
+<div class="proyecto-card">
+<img src="panel.jpeg">
+<div class="proyecto-overlay">
+<h3>Negocio Local</h3>
+<p>Instalación fotovoltaica empresarial</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROCESO -->
+
+<section id="proceso" class="fade-section">
+
+<h2 class="section-title">Nuestro Proceso</h2>
+
+<div class="proceso-steps">
+
+<div class="step-card">
+<div class="step-number">1</div>
+<h3>Evaluación</h3>
+<p>Análisis energético del negocio.</p>
+</div>
+
+<div class="step-card">
+<div class="step-number">2</div>
+<h3>Diseño</h3>
+<p>Diseño del sistema solar.</p>
+</div>
+
+<div class="step-card">
+<div class="step-number">3</div>
+<h3>Instalación</h3>
+<p>Instalación profesional.</p>
+</div>
+
+<div class="step-card">
+<div class="step-number">4</div>
+<h3>Monitoreo</h3>
+<p>Seguimiento continuo del sistema.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta fade-section">
+
+<h2>¿Listo para reducir los costos energéticos de tu empresa?</h2>
+
+<a href="index.html#contacto" class="btn-primary">Solicitar Evaluación</a>
+
+</section>
+
+<script>
+
+const hamburger=document.getElementById("hamburger");
+const navMenu=document.getElementById("navMenu");
+
+hamburger.addEventListener("click",()=>{
+navMenu.classList.toggle("active");
+});
+
+const sections=document.querySelectorAll(".fade-section");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+});
+});
+
+sections.forEach(section=>{
+observer.observe(section);
+});
+
+</script>
+
+</body>
+</html>

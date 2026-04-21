@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bombeo Solar | Inversiones Komp</title>
+
+<style>
+
+/* =========================
+RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+line-height:1.6;
+overflow-x:hidden;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+/* =========================
+HEADER
+========================= */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:#000;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 4px 15px rgba(0,0,0,0.6);
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#e1641e;
+}
+
+.nav-menu{
+display:flex;
+gap:25px;
+}
+
+.nav-menu a{
+color:#fff;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-menu a:hover{
+color:#e1641e;
+}
+
+.hamburger{
+display:none;
+flex-direction:column;
+cursor:pointer;
+}
+
+.hamburger span{
+height:3px;
+width:25px;
+background:#fff;
+margin-bottom:5px;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero-bombeo{
+position:relative;
+background:url('panel.jpeg') center/cover no-repeat;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:120px 10%;
+text-align:center;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85));
+}
+
+.hero-content{
+position:relative;
+max-width:800px;
+margin:auto;
+}
+
+.hero-title{
+font-size:50px;
+color:#e1641e;
+margin-bottom:20px;
+}
+
+.hero-subtitle{
+font-size:18px;
+margin-bottom:30px;
+color:#ddd;
+}
+
+.btn-primary{
+background:#e1641e;
+color:#fff;
+padding:14px 28px;
+border-radius:8px;
+font-weight:600;
+display:inline-block;
+transition:.3s;
+}
+
+.btn-primary:hover{
+background:#ff7b34;
+transform:translateY(-2px);
+}
+
+/* =========================
+SECCIONES
+========================= */
+
+section{
+padding:110px 10%;
+max-width:1200px;
+margin:auto;
+}
+
+.section-title{
+text-align:center;
+font-size:36px;
+margin-bottom:50px;
+color:#e1641e;
+}
+
+/* =========================
+CARDS BENEFICIOS
+========================= */
+
+.beneficios-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.beneficio-card{
+background:#1c1c1c;
+padding:30px;
+border-radius:12px;
+text-align:center;
+transition:.4s;
+}
+
+.beneficio-card:hover{
+transform:translateY(-6px);
+}
+
+.beneficio-icon{
+font-size:40px;
+margin-bottom:15px;
+color:#e1641e;
+}
+
+/* =========================
+PROCESO
+========================= */
+
+.proceso-steps{
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+justify-content:center;
+}
+
+.step-card{
+flex:1 1 220px;
+background:#1c1c1c;
+padding:30px;
+border-radius:12px;
+text-align:center;
+}
+
+.step-number{
+font-size:30px;
+font-weight:bold;
+color:#e1641e;
+margin-bottom:10px;
+}
+
+/* =========================
+CTA
+========================= */
+
+.cta{
+background:#e1641e;
+text-align:center;
+padding:80px 10%;
+}
+
+.cta h2{
+margin-bottom:20px;
+}
+
+.cta .btn-primary{
+background:#000;
+color:#e1641e;
+}
+
+/* =========================
+ANIMACION SCROLL
+========================= */
+
+.fade-section{
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.fade-section.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+header{
+padding:15px 5%;
+}
+
+.hero-bombeo{
+padding:100px 5%;
+min-height:90vh;
+}
+
+.hero-title{
+font-size:34px;
+}
+
+.hero-subtitle{
+font-size:16px;
+}
+
+.nav-menu{
+position:absolute;
+top:70px;
+right:0;
+background:#000;
+flex-direction:column;
+width:220px;
+padding:20px;
+display:none;
+}
+
+.nav-menu.active{
+display:flex;
+}
+
+.nav-menu a{
+margin:10px 0;
+}
+
+.hamburger{
+display:flex;
+}
+
+.beneficios-grid{
+grid-template-columns:1fr;
+}
+
+.proceso-steps{
+flex-direction:column;
+align-items:center;
+}
+
+.step-card{
+width:100%;
+max-width:420px;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero-title{
+font-size:28px;
+}
+
+.hero-subtitle{
+font-size:14px;
+}
+
+.section-title{
+font-size:26px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Inversiones Komp</div>
+
+<nav class="nav-menu" id="navMenu">
+
+<a href="index.html">Inicio</a>
+<a href="#beneficios">Beneficios</a>
+<a href="#proceso">Proceso</a>
+<a href="index.html#contacto">Contacto</a>
+
+</nav>
+
+<div class="hamburger" id="hamburger">
+
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero-bombeo">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1 class="hero-title">Bombeo Solar para Agua</h1>
+
+<p class="hero-subtitle">
+Sistemas de bombeo que utilizan energía solar para extraer y transportar agua en fincas, pozos, ganadería y sistemas de riego sin depender de electricidad convencional.
+</p>
+
+<a href="index.html#contacto" class="btn-primary">Solicitar Evaluación</a>
+
+</div>
+
+</section>
+
+<!-- BENEFICIOS -->
+
+<section id="beneficios" class="fade-section">
+
+<h2 class="section-title">Beneficios del Bombeo Solar</h2>
+
+<div class="beneficios-grid">
+
+<div class="beneficio-card">
+<div class="beneficio-icon">💧</div>
+<h3>Extracción de Agua Eficiente</h3>
+<p>Bombeo continuo desde pozos, ríos o reservorios.</p>
+</div>
+
+<div class="beneficio-card">
+<div class="beneficio-icon">☀</div>
+<h3>Energía 100% Solar</h3>
+<p>Funciona con energía limpia y renovable.</p>
+</div>
+
+<div class="beneficio-card">
+<div class="beneficio-icon">💰</div>
+<h3>Reducción de Costos</h3>
+<p>Elimina gastos en combustibles o electricidad.</p>
+</div>
+
+<div class="beneficio-card">
+<div class="beneficio-icon">🌱</div>
+<h3>Mayor Productividad</h3>
+<p>Garantiza disponibilidad de agua para cultivos y ganado.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROCESO -->
+
+<section id="proceso" class="fade-section">
+
+<h2 class="section-title">Nuestro Proceso</h2>
+
+<div class="proceso-steps">
+
+<div class="step-card">
+<div class="step-number">1</div>
+<h3>Evaluación del Sitio</h3>
+<p>Analizamos el pozo, profundidad y necesidades de agua.</p>
+</div>
+
+<div class="step-card">
+<div class="step-number">2</div>
+<h3>Diseño del Sistema</h3>
+<p>Diseñamos el sistema solar y la bomba adecuada.</p>
+</div>
+
+<div class="step-card">
+<div class="step-number">3</div>
+<h3>Instalación Profesional</h3>
+<p>Instalación segura y eficiente del sistema.</p>
+</div>
+
+<div class="step-card">
+<div class="step-number">4</div>
+<h3>Monitoreo y Soporte</h3>
+<p>Seguimiento del rendimiento del sistema.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta fade-section">
+
+<h2>Obtén agua utilizando energía solar</h2>
+
+<a href="index.html#contacto" class="btn-primary">Solicitar Evaluación</a>
+
+</section>
+
+<script>
+
+const hamburger=document.getElementById("hamburger");
+const navMenu=document.getElementById("navMenu");
+
+hamburger.addEventListener("click",()=>{
+navMenu.classList.toggle("active");
+});
+
+const sections=document.querySelectorAll(".fade-section");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+});
+});
+
+sections.forEach(section=>{
+observer.observe(section);
+});
+
+</script>
+
+</body>
+</html>
+```

@@ -1,0 +1,170 @@
+<!-- LOADING / PRELOADER KOMP -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KOMP Loading</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<!-- PRELOADER -->
+
+<div id="preloader">
+
+<div class="loader-wrapper">
+
+<img src="logo.png" alt="KOMP" class="logo-img">
+
+<h1 class="logo-name">
+INVERSIONES <span>KOMP</span>
+</h1>
+
+<div class="loading-line"></div>
+
+</div>
+
+</div>
+
+
+
+<style>
+
+/* ================================
+BASE DEL PRELOADER
+pantalla completa
+================================ */
+
+#preloader{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+/* ================================
+CONTENEDOR CENTRAL
+================================ */
+
+.loader-wrapper{
+text-align:center;
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ================================
+LOGO
+================================ */
+
+.logo-img{
+width:110px;
+margin-bottom:30px;
+filter:brightness(0) invert(1);
+opacity:0;
+animation:logoReveal 1.2s ease forwards 0.3s;
+}
+
+@keyframes logoReveal{
+to{
+opacity:1;
+}
+}
+
+/* ================================
+TEXTO
+================================ */
+
+.logo-name{
+font-family:'Orbitron', sans-serif;
+font-weight:400;
+font-size:20px;
+letter-spacing:8px;
+text-transform:uppercase;
+color:#ffffff;
+margin-bottom:40px;
+opacity:0;
+animation:textReveal 1.5s ease forwards 0.6s;
+}
+
+/* COLOR CORPORATIVO */
+
+.logo-name span{
+font-weight:700;
+color:#e1641e;
+}
+
+@keyframes textReveal{
+0%{
+opacity:0;
+letter-spacing:20px;
+}
+100%{
+opacity:1;
+letter-spacing:8px;
+}
+}
+
+/* ================================
+LINEA ANIMADA
+================================ */
+
+.loading-line{
+width:200px;
+height:2px;
+margin:auto;
+background:linear-gradient(
+90deg,
+transparent,
+#e1641e,
+transparent
+);
+background-size:200% 100%;
+animation:lineMove 1.5s linear infinite;
+}
+
+@keyframes lineMove{
+0%{ background-position:-200% 0; }
+100%{ background-position:200% 0; }
+}
+
+</style>
+
+
+<script>
+
+/* ===================================
+DESPUES DE 3 SEGUNDOS
+REDIRIGE AL INDEX
+=================================== */
+
+setTimeout(function(){
+
+window.location.href = "index.html";
+
+},3000);
+
+</script>
+
+
+</body>
+</html>
