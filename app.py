@@ -7,7 +7,9 @@ import shutil
 import pandas as pd
 
 app = Flask(__name__)
-CORS(app)
+
+# ✅ CORS CORREGIDO (IMPORTANTE)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # ================================
 # CONFIG
@@ -54,11 +56,17 @@ def crear_backup():
 def home():
     return "Servidor funcionando - Komp Solar"
 
+# ================================
 # FORMULARIO
+# ================================
+
 @app.route('/contacto', methods=['POST'])
 def contacto():
     try:
         data = request.get_json()
+
+        if not data:
+            return jsonify({"success": False, "message": "No hay datos"})
 
         # VALIDACIÓN
         if not data.get("nombre") or not data.get("email"):
@@ -91,9 +99,12 @@ def contacto():
 
     except Exception as e:
         print("❌ Error:", e)
-        return jsonify({"success": False})
+        return jsonify({"success": False, "message": "Error en servidor"})
 
+# ================================
 # PANEL CLIENTES (OCULTO)
+# ================================
+
 @app.route('/admin-clientes-93847')
 def clientes():
     contactos = leer_datos()
@@ -108,7 +119,10 @@ def clientes():
 
     return html
 
+# ================================
 # REPORTE
+# ================================
+
 @app.route('/admin-reporte-93847')
 def reporte():
     contactos = leer_datos()
@@ -139,7 +153,10 @@ def reporte():
 
     return html
 
+# ================================
 # EXPORTAR EXCEL
+# ================================
+
 @app.route('/admin-exportar-93847')
 def exportar():
     contactos = leer_datos()
@@ -159,5 +176,6 @@ def exportar():
 # ================================
 # START
 # ================================
+
 if __name__ == '__main__':
     app.run(debug=True)
