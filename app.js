@@ -200,7 +200,11 @@ if (form && btn) {
     };
 
     try {
+<<<<<<< HEAD
       const res = await fetch("https://komp.onrender.com/contacto", {
+=======
+      const res = await fetch("https://komp-gnlu.onrender.com", ")", {
+>>>>>>> 135d8eea6ec658d2b1b452948d2145e250cf1791
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -230,4 +234,10 @@ if (form && btn) {
 
   });
 
+<<<<<<< HEAD
 }
+=======
+}
+
+}); // ✅ CIERRE CORRECTO
+>>>>>>> 135d8eea6ec658d2b1b452948d2145e250cf1791
