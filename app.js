@@ -205,7 +205,7 @@ if (form && btn) {
     };
 
     try {
-      const res = await fetch("fetch("https://TU-APP.onrender.com/contacto", ")", {
+      const res = await fetch("https://komp-gnlu.onrender.com", ")", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
