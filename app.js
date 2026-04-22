@@ -172,11 +172,6 @@ if(slider){
 
 
 
-
-/* =====================================================
-FORMULARIO CONTACTO (FLASK)
-===================================================== */
-
 const form = document.getElementById("form-contacto");
 const btn = document.getElementById("btn-enviar");
 
@@ -205,7 +200,7 @@ if (form && btn) {
     };
 
     try {
-      const res = await fetch("fetch("https://komp.onrender.com/contacto")", {
+      const res = await fetch("https://komp.onrender.com/contacto", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -225,6 +220,7 @@ if (form && btn) {
       }
 
     } catch (error) {
+      console.error(error);
       message.style.color = "red";
       message.textContent = "No se pudo conectar con el servidor";
     }
@@ -235,5 +231,3 @@ if (form && btn) {
   });
 
 }
-
-}); // ✅ CIERRE CORRECTO
