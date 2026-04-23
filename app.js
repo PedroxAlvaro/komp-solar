@@ -1,4 +1,4 @@
- document.addEventListener("DOMContentLoaded", function(){
+ document.addEventListener("DOMContentLoaded", function())={
 
 /* =====================================================
 MENÚ HAMBURGUESA
@@ -172,10 +172,24 @@ if(slider){
 
 
 
-const form = document.getElementById("form-contacto");
-const btn = document.getElementById("btn-enviar");
 
-if (form && btn) {
+
+
+/* =====================================================
+seccion contacto
+===================================================== */
+/* =====================================================
+seccion contacto
+===================================================== */
+/* =====================================================
+seccion contacto
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const form = document.getElementById("form-contacto");
+  const btn = document.getElementById("btn-enviar");
+
+  if (!form || !btn) return;
 
   const loader = btn.querySelector(".loader");
   const text = btn.querySelector("span");
@@ -187,10 +201,8 @@ if (form && btn) {
     if (loader) loader.style.display = "block";
     if (text) text.style.opacity = "0.5";
 
-    if (message) {
-      message.style.color = "#00ff88";
-      message.textContent = "Enviando solicitud...";
-    }
+    message.style.color = "#00ff88";
+    message.textContent = "Enviando solicitud...";
 
     const data = {
       nombre: form.nombre.value,
@@ -200,17 +212,15 @@ if (form && btn) {
     };
 
     try {
-<<<<<<< HEAD
-      const res = await fetch("https://komp.onrender.com/contacto", {
-=======
-      const res = await fetch("https://komp-gnlu.onrender.com", ")", {
->>>>>>> 135d8eea6ec658d2b1b452948d2145e250cf1791
+      const res = await fetch("https://komp-gnlu.onrender.com/contacto", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
       });
+
+      if (!res.ok) throw new Error("Error servidor");
 
       const result = await res.json();
 
@@ -234,10 +244,4 @@ if (form && btn) {
 
   });
 
-<<<<<<< HEAD
-}
-=======
-}
-
-}); // ✅ CIERRE CORRECTO
->>>>>>> 135d8eea6ec658d2b1b452948d2145e250cf1791
+});
