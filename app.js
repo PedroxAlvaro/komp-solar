@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const res = await fetch("https://komp-gnlu.onrender.com/contacto", {
+      const res = await fetch("https://komp-solar.onrender.com/contacto", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
