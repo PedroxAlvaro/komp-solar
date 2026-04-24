@@ -130,67 +130,74 @@ def clientes():
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Panel Admin</title>
+<title>Panel Clientes</title>
 
 <style>
-body {{
-    font-family: Arial;
-    background: #0f172a;
-    color: white;
-    padding: 20px;
+:root{{
+    --fondo:#000;
+    --card:#0d0d0d;
+    --card-hover:#1a1a1a;
+    --primario:#ff7a00;
+    --primario-hover:#ff9500;
+    --texto:#fff;
+    --gris:#aaa;
 }}
 
-h2 {{
-    text-align: center;
-    margin-bottom: 20px;
+body{{
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    padding:20px;
 }}
 
-.top-bar {{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+h2{{
+    text-align:center;
+    margin-bottom:25px;
+    color: var(--primario);
 }}
 
-input {{
-    padding: 10px;
-    width: 250px;
-    border-radius: 8px;
-    border: none;
+.top-bar{{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    flex-wrap:wrap;
 }}
 
-a.boton {{
-    background: #00ff88;
-    color: black;
-    padding: 10px 15px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
+input{{
+    padding:10px;
+    width:260px;
+    border-radius:6px;
+    border:1px solid #222;
+    background:#000;
+    color:white;
 }}
 
-table {{
-    width: 100%;
-    border-collapse: collapse;
-    background: #111827;
-    border-radius: 10px;
-    overflow: hidden;
+.boton{{
+    background:var(--primario);
+    color:white;
+    padding:10px 18px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
 }}
 
-th, td {{
-    padding: 12px;
-    text-align: center;
+table{{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--card);
 }}
 
-th {{
-    background: #00ff88;
-    color: black;
+th, td{{
+    padding:12px;
+    text-align:center;
 }}
 
-tr:nth-child(even) {{
-    background: #1f2937;
+th{{
+    background:var(--primario);
 }}
 
-tr:hover {{
-    background: #374151;
+tr:nth-child(even){{
+    background:var(--card-hover);
 }}
 </style>
 
@@ -201,7 +208,7 @@ tr:hover {{
 
 <div class="top-bar">
     <input type="text" id="buscador" placeholder="Buscar cliente...">
-    <a href="/admin-exportar-93847" class="boton">📥 Descargar Excel</a>
+    <a href="/admin-exportar-93847" class="boton">📥 Excel</a>
 </div>
 
 <table id="tabla">
@@ -235,12 +242,9 @@ const filas = document.querySelectorAll("#tabla tr");
 buscador.addEventListener("keyup", function() {
     const texto = buscador.value.toLowerCase();
 
-    filas.forEach((fila, index) => {
-        if(index === 0) return;
-
-        const contenido = fila.innerText.toLowerCase();
-
-        fila.style.display = contenido.includes(texto) ? "" : "none";
+    filas.forEach((fila, i) => {
+        if(i === 0) return;
+        fila.style.display = fila.innerText.toLowerCase().includes(texto) ? "" : "none";
     });
 });
 </script>
@@ -250,7 +254,6 @@ buscador.addEventListener("keyup", function() {
 """
 
     return html
-
 
 
 
@@ -279,97 +282,40 @@ def reporte():
 
     html = f"""
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Reporte</title>
-
 <style>
-body {{
-    font-family: Arial;
-    background: #0f172a;
-    color: white;
-    padding: 20px;
-}}
-
-h2 {{
-    text-align: center;
-    margin-bottom: 20px;
-}}
-
-.card {{
-    background: #111827;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}}
-
-.total {{
-    font-size: 28px;
-    color: #00ff88;
-    text-align: center;
-}}
-
-.grid {{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}}
-
-ul {{
-    list-style: none;
-    padding: 0;
-}}
-
-li {{
-    padding: 8px;
-    background: #1f2937;
-    margin-bottom: 5px;
-    border-radius: 5px;
-}}
+body{{background:#000;color:#fff;font-family:Arial;padding:20px}}
+h2{{color:#ff7a00;text-align:center}}
+.card{{background:#111;padding:20px;margin:10px;border-radius:10px}}
+.total{{font-size:28px;color:#ff7a00;text-align:center}}
+.grid{{display:grid;grid-template-columns:1fr 1fr;gap:20px}}
+li{{background:#1a1a1a;margin:5px;padding:8px;border-radius:5px}}
 </style>
-
 </head>
+
 <body>
 
-<h2>📊 Reporte de Clientes</h2>
+<h2>📊 Reporte</h2>
 
-<div class="card total">
-    Total de contactos: {total}
-</div>
+<div class="card total">Total: {total}</div>
 
 <div class="grid">
 
 <div class="card">
-<h3>📅 Contactos por día</h3>
+<h3>Por día</h3>
 <ul>
 """
 
-    for fecha in sorted(conteo_por_dia.keys(), reverse=True):
-        html += f"<li>{fecha}: {conteo_por_dia[fecha]}</li>"
+    for f in sorted(conteo_por_dia.keys(), reverse=True):
+        html += f"<li>{f}: {conteo_por_dia[f]}</li>"
 
-    html += """
-</ul>
-</div>
+    html += "</ul></div><div class='card'><h3>Por hora</h3><ul>"
 
-<div class="card">
-<h3>⏰ Contactos por hora</h3>
-<ul>
-"""
+    for h in sorted(conteo_por_hora.keys()):
+        html += f"<li>{h}:00 - {conteo_por_hora[h]}</li>"
 
-    for hora in sorted(conteo_por_hora.keys()):
-        html += f"<li>{hora}:00 - {conteo_por_hora[hora]}</li>"
-
-    html += """
-</ul>
-</div>
-
-</div>
-
-</body>
-</html>
-"""
+    html += "</ul></div></div></body></html>"
 
     return html
 
@@ -396,12 +342,10 @@ def exportar():
     contactos = leer_datos()
 
     if not contactos:
-        return "No hay datos para exportar"
+        return "No hay datos"
 
-    # 🔹 Ordenar por más reciente
     contactos = sorted(contactos, key=lambda x: x["timestamp"], reverse=True)
 
-    # 🔹 Crear DataFrame ordenado (PRO)
     df = pd.DataFrame(contactos, columns=[
         "nombre",
         "email",
@@ -411,40 +355,36 @@ def exportar():
         "hora"
     ])
 
-    # 🔹 Renombrar columnas (más profesional en Excel)
-    df.columns = [
-        "Nombre",
-        "Correo",
-        "Teléfono",
-        "Mensaje",
-        "Fecha",
-        "Hora"
-    ]
+    df.columns = ["Nombre","Correo","Teléfono","Mensaje","Fecha","Hora"]
 
-    # 🔹 Crear archivo Excel
     archivo_excel = os.path.join(DATA_DIR, "clientes.xlsx")
 
-    # 🔹 Exportar con formato
     with pd.ExcelWriter(archivo_excel, engine='openpyxl') as writer:
         df.to_excel(writer, index=False, sheet_name="Clientes")
 
-        # 🔹 Ajustar ancho columnas automáticamente
         sheet = writer.sheets["Clientes"]
+
+        # 🔥 ESTILO PRO
+        from openpyxl.styles import Font, PatternFill
+
+        for cell in sheet[1]:
+            cell.font = Font(bold=True, color="FFFFFF")
+            cell.fill = PatternFill(start_color="FF7A00", fill_type="solid")
+
+        # Ajuste ancho automático
         for col in sheet.columns:
-            max_length = 0
-            col_letter = col[0].column_letter
+            max_length = max(len(str(cell.value)) if cell.value else 0 for cell in col)
+            sheet.column_dimensions[col[0].column_letter].width = max_length + 3
 
-            for cell in col:
-                try:
-                    if cell.value:
-                        max_length = max(max_length, len(str(cell.value)))
-                except:
-                    pass
-
-            sheet.column_dimensions[col_letter].width = max_length + 2
-
-    # 🔹 Descargar archivo
     return send_file(archivo_excel, as_attachment=True)
+
+
+
+
+
+
+
+
 # ================================
 # START
 # ================================
