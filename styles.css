@@ -893,6 +893,10 @@ abajo de aqui ..
 
 
 
+
+
+
+
 /* ======================================================
 PROYECTOS
 ====================================================== */
@@ -944,28 +948,26 @@ FILTROS
 }
 
 /* ======================================================
-CARRUSEL (SIN ROMPER NADA)
+CARRUSEL
 ====================================================== */
 
 .proyectos-grid{
     display:flex;
     overflow-x:auto;
     overflow-y:hidden;
-
     gap:25px;
     padding:25px 15px;
-
     scroll-behavior:smooth;
 
     /* móvil */
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
 
-    /* snap tipo Netflix */
+    /* snap */
     scroll-snap-type:x proximity;
 }
 
-/* SCROLL FUNCIONAL */
+/* SCROLL */
 .proyectos-grid::-webkit-scrollbar{
     height:8px;
 }
@@ -1001,14 +1003,13 @@ CARDS
     transition:all 0.4s ease;
     box-shadow:0 5px 20px rgba(0,0,0,0.6);
 
-    /* efecto suave */
     transform:scale(0.95);
     opacity:0.85;
 
     scroll-snap-align:center;
 }
 
-/* HOVER PROFESIONAL */
+/* HOVER */
 .proyecto-card:hover{
     transform:scale(1.04);
     opacity:1;
@@ -1034,6 +1035,8 @@ INFO
 
 .proyecto-info{
     padding:20px;
+    position:relative;
+    z-index:3; /* asegura clic */
 }
 
 .proyecto-info h3{
@@ -1059,6 +1062,8 @@ INFO
     border-radius:20px;
     font-size:12px;
     transition:all 0.3s ease;
+    position:relative;
+    z-index:5; /* prioridad sobre capas */
 }
 
 .btn-proyecto:hover{
@@ -1083,7 +1088,7 @@ RIBBON
     border-radius:0 12px 12px 0;
     box-shadow:2px 2px 10px rgba(0,0,0,0.7);
     letter-spacing:1px;
-    z-index:2;
+    z-index:4;
 }
 
 /* ======================================================
@@ -1097,6 +1102,9 @@ EFECTO PROFUNDIDAD
     background:linear-gradient(180deg, transparent, rgba(0,0,0,0.4));
     opacity:0;
     transition:0.3s;
+
+    /* SOLUCIÓN IMPORTANTE */
+    pointer-events:none;
 }
 
 .proyecto-card:hover::after{
@@ -1104,7 +1112,7 @@ EFECTO PROFUNDIDAD
 }
 
 /* ======================================================
-BOTONES (SI LOS USAS)
+BOTONES SLIDER
 ====================================================== */
 
 .slider-btn{
@@ -1161,7 +1169,6 @@ RESPONSIVE
         display:none;
     }
 }
-
 
 
 
